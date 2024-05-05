@@ -3,6 +3,7 @@ package company.abstracts;
 import company.interfaces.Employable;
 
 public abstract class Employee implements Employable {
+
     private String name;
     private double salary;
     private int id;
@@ -20,4 +21,7 @@ public abstract class Employee implements Employable {
     public double getSalary() {
         return salary;
     }
+
+    @Override
+    public abstract void work();
 }
