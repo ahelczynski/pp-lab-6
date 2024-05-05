@@ -1,32 +1,29 @@
 package company;
 
-
 import company.models.Manager;
 import company.models.Worker;
+import company.abstracts.Employee;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) {
-        Worker worker1 = new Worker("Adam Ostoja", 4500.0, 1);
-        Worker worker2 = new Worker("Adam Hełczyński", 4000.0, 2);
-        Worker worker3 = new Worker("Adam Ostoja-Hełczyński", 3200.0, 3);
-        Worker worker4 = new Worker("Ostoja-Hełczyński", 3800.0, 4);
+        Worker worker1 = new Worker("Worker1", 3000.0, 1, "2020-01-01", "Developer");
+        Worker worker2 = new Worker("Worker2", 3200.0, 2, "2020-02-01", "Developer");
+        Worker worker3 = new Worker("Worker3", 3100.0, 3, "2020-03-01", "Tester");
+        Worker worker4 = new Worker("Worker4", 3300.0, 4, "2020-04-01", "Tester");
+        Manager manager = new Manager("Manager1", 5000.0, 5, "2019-05-01", "Project Manager");
 
-        Manager manager = new Manager("Jan Kowalski", 8500.0, 5);
+        List<Employee> employees = new ArrayList<>();
+        employees.add(worker1);
+        employees.add(worker2);
+        employees.add(worker3);
+        employees.add(worker4);
+        employees.add(manager);
 
-        System.out.println("Worker " + worker1.getName() + " salary: " + worker1.getSalary());
-        worker1.work();
-
-        System.out.println("Worker " + worker2.getName() + " salary: " + worker2.getSalary());
-        worker2.work();
-
-        System.out.println("Worker " + worker3.getName() + " salary: " + worker3.getSalary());
-        worker3.work();
-
-        System.out.println("Worker " + worker4.getName() + " salary: " + worker4.getSalary());
-        worker4.work();
-
-        System.out.println("Manager " + manager.getName() + " salary: " + manager.getSalary());
-        manager.work();
+        for (Employee emp : employees) {
+            emp.work();
+            System.out.println("- " + emp.getName() + " (ID: " + emp.hashCode() + ", Position: " + emp.getPosition() + ", Hire date: " + emp.getHireDate() + ", Salary: " + emp.getSalary() + ")");
+        }
     }
 }
